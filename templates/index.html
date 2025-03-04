@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <!-- YouTube Logo -->
+        
         <img src="{{ url_for('static', filename='youtube-logo.png') }}" alt="YouTube Logo" class="logo">
         
         <h1>YouTube Video Downloader</h1>
         <p>Enter the URL of the YouTube video you want to download:</p>
         
-        <!-- Flash Messages -->
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="messages">
@@ -25,14 +25,14 @@
             {% endif %}
         {% endwith %}
         
-        <!-- Form -->
+
         <form method="POST">
             <input type="url" name="video_url" placeholder="Paste YouTube link here" required>
             <button type="submit">Download</button>
         </form>
     </div>
 
-    <!-- Footer with your name and animation -->
+    
     <footer>
         <p>~ Created by <strong class="animated-name">Siba Prasad Padhi</strong></p>
     </footer>
