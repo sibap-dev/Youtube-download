@@ -8,7 +8,7 @@ app = Flask(__name__)
 def download_youtube_video(url):
     try:
         ydl_opts = {
-            'outtmpl': 'downloads/%(title)s.%(ext)s',  # Save video in the "downloads" folder
+            'outtmpl': '/tmp/%(title)s.%(ext)s',  # Save video in the /tmp directory (required for Vercel)
             'format': 'best',  # Download the best quality available
         }
 
@@ -37,9 +37,9 @@ def index():
             return "Please enter a valid YouTube URL."
     return render_template("index.html")
 
-# Ensure the "downloads" folder exists
-if not os.path.exists("downloads"):
-    os.makedirs("downloads")
+# Ensure the /tmp directory exists (required for Vercel)
+if not os.path.exists("/tmp"):
+    os.makedirs("/tmp")
 
 # Vercel requires the app to be assigned to a variable named `app`
 if __name__ == "__main__":
