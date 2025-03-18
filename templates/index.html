@@ -4,37 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Video Downloader</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        
-        <img src="{{ url_for('static', filename='youtube-logo.png') }}" alt="YouTube Logo" class="logo">
+        <!-- YouTube Logo -->
+        <img src="/static/youtube-logo.png" alt="YouTube Logo" class="logo">
         
         <h1>YouTube Video Downloader</h1>
         <p>Enter the URL of the YouTube video you want to download:</p>
         
-
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
+        <!-- Flash Messages -->
+       
                 <div class="messages">
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
                 </div>
-            {% endif %}
-        {% endwith %}
         
-
+        <!-- Form -->
         <form method="POST">
             <input type="url" name="video_url" placeholder="Paste YouTube link here" required>
             <button type="submit">Download</button>
         </form>
     </div>
 
-    
+    <!-- Footer with your name -->
     <footer>
-        <p>~ Created by <strong class="animated-name">Siba Prasad Padhi</strong></p>
+        <p>Created by <strong class="animated-name">Siba Prasad Padhi</strong></p>
     </footer>
 </body>
 </html>

@@ -8,7 +8,7 @@ app = Flask(__name__)
 def download_youtube_video(url):
     try:
         ydl_opts = {
-            'outtmpl': '/tmp/%(title)s.%(ext)s',  # Save video in the /tmp directory (required for Render)
+            'outtmpl': 'downloads/%(title)s.%(ext)s',  # Save video in the "downloads" folder
             'format': 'best',  # Download the best quality available
         }
 
@@ -37,11 +37,10 @@ def index():
             return "Please enter a valid YouTube URL."
     return render_template("index.html")
 
-# Ensure the /tmp directory exists (required for Render)
-if not os.path.exists("/tmp"):
-    os.makedirs("/tmp")
+# Ensure the "downloads" folder exists
+if not os.path.exists("downloads"):
+    os.makedirs("downloads")
 
-# Bind to the port provided by Render
+# Vercel requires the app to be assigned to a variable named `app`
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Use Render's PORT or default to 5000
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True)
